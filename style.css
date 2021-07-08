@@ -1,0 +1,74 @@
+/** @format */
+.container {
+  border: 3px solid #000;
+  max-width: 440px;
+  color: black;
+  background-image: url(images/clouds.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+.weather-temp-today {
+  margin-left: 270px;
+  font-size: 40px;
+  margin-top: -90px;
+  padding: 20px;
+  color: black;
+}
+
+.weather-unit-text-today {
+  margin-left: 310px;
+  font-size: 16px;
+  margin-top: -90px;
+  padding: 20px;
+  float: left;
+  color: white;
+}
+.weather-unit-text-today1 {
+  margin-left: 340px;
+  font-size: 16px;
+  margin-top: -90px;
+  padding: 20px;
+  float: left;
+  color: white;
+}
+#precipitation-probality {
+  margin-left: 240px;
+  margin-top: -90px;
+  padding: 20px;
+  position: relative;
+  padding-right: 0;
+  padding-left: 10;
+  width: 0;
+  top: -32px;
+  color: black;
+}
+
+#wind-speed {
+  margin-left: 240px;
+  margin-top: -90px;
+  padding: 20px;
+  padding-right: 0;
+  padding-left: 10;
+  color: black;
+  position: relative;
+  top: -32px;
+}
+
+ul {
+  list-style-type: none;
+  color: black;
+  margin: 0;
+  padding: 9px;
+}
+.col {
+  text-align: center;
+  color: black;
+}
+body {
+  max-width: 500px;
+}
+.created {
+  text-align: center;
+  margin: 40px;
+}
