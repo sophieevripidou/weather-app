@@ -3,7 +3,7 @@
   border: 3px solid #000;
   max-width: 440px;
   color: black;
-  background-image: url(images/clouds.jpg);
+  background-image: url(src/images/clouds.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 10px;
@@ -71,4 +71,7 @@ body {
 .created {
   text-align: center;
   margin: 40px;
+}
+img{
+  width: 50px;
 }
