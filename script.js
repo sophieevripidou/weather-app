@@ -22,6 +22,48 @@ function formatDate(date) {
 
   return `${day} ${hours}:${minutes}`;
 }
+function formatDay(timestamp){
+  let date = new Date(timestamp*1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+
+}
+
+
+function displayForecast(response){
+  let forecast = response.data.daily;
+
+  let forecastElement=document.querySelector("#forecast");
+  
+  let days = ["Tue", "Wed", "Thu", "Fri"];
+let forecastHTML = `<div class="row">`;
+forecast.forEach(function(forecastDay, index){
+if (index < 4){
+  forecastHTML = forecastHTML + `<div class="col-3">
+                <ul>
+                <li>${days}</li>
+                        <li>12:00pm</li>
+                        <li> <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" class="forecast-icon" height="65px" width="65px"/></li>
+                        <li>${formatDay(forecastDay.dt)}</li>
+                        </ul>
+                </div>`;
+               
+ }
+    })
+            forecastHTML = forecastHTML+`</div>`
+            forecastElement.innerHTML = forecastHTML;
+     
+    }  
+
+function getForecast(coordinates){
+let apiKey = "d69010af0f1b1a9a7eb6e465bcfbac9b";
+let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`
+axios.get(apiUrl).then(displayForecast);
+}
+
+
 
 function displayWeatherCondition(response) {
   console.log(response);
@@ -33,10 +75,12 @@ function displayWeatherCondition(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
-  document.querySelector("#description").innerHTML = Math.round(
-    response.data.weather[0].main
-  );
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].description
+  ;
+  getForecast(response.data.coord);
 }
+
 
 function search(city) {
   let apiKey = "d69010af0f1b1a9a7eb6e465bcfbac9b";
@@ -96,3 +140,5 @@ let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
 search("Nicosia");
+
+displayForecast();
