@@ -45,7 +45,7 @@ if (index < 4){
                 <ul>
                 <li>${days}</li>
                         <li>12:00pm</li>
-                        <li> <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" class="forecast-icon" height="65px" width="65px"/></li>
+                        <li> <img src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" class="forecast-icon" height="65px" width="65px"/></li>
                         <li>${formatDay(forecastDay.dt)}</li>
                         </ul>
                 </div>`;
@@ -141,4 +141,4 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 
 search("Nicosia");
 
-displayForecast();
+
