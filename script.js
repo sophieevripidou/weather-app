@@ -34,6 +34,7 @@ function formatDay(timestamp){
 
 function displayForecast(response){
   let forecast = response.data.daily;
+  
 
   let forecastElement=document.querySelector("#forecast");
   
@@ -67,6 +68,7 @@ axios.get(apiUrl).then(displayForecast);
 
 function displayWeatherCondition(response) {
   console.log(response);
+
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
@@ -79,7 +81,12 @@ function displayWeatherCondition(response) {
     response.data.weather[0].description
   ;
   getForecast(response.data.coord);
+
+  let iconElement = document.querySelector("#icon")
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
 }
+
 
 
 function search(city) {

@@ -72,6 +72,9 @@ body {
   text-align: center;
   margin: 40px;
 }
-img{
+img {
   width: 50px;
+}
+.description {
+  text-transform: capitalize;
 }
