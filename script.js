@@ -25,38 +25,43 @@ function formatDate(date) {
 function formatDay(timestamp){
   let date = new Date(timestamp*1000);
   let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let days = [
+  "Sun", 
+  "Mon", 
+  "Tue", 
+  "Wed", 
+  "Thu", 
+  "Fri", 
+  "Sat"];
 
   return days[day];
 
 }
 
 
-function displayForecast(response){
+function displayForecast(response) {
   let forecast = response.data.daily;
-  
-
-  let forecastElement=document.querySelector("#forecast");
-  
-  // let days = ["Tue", "Wed", "Thu", "Fri"];
-let forecastHTML = `<div class="row">`;
-forecast.forEach(function(forecastDay, index){
-if (index < 4){
-  forecastHTML = forecastHTML + `<div class="col-3">
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 4) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-3">
                 <ul>
-                <li>${days}</li>
+                <li>${formatDay(forecastDay.dt)}</li>
                         <li>12:00pm</li>
-                        <li> <img src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" class="forecast-icon" height="65px" width="65px"/></li>
-                        <li>${formatDay(forecastDay.dt)}</li>
+                        <li> <img src="https://openweathermap.org/img/wn/${
+                          forecastDay.weather[0].icon
+                        }@2x.png" class="forecast-icon" height="65px" width="65px"/></li>
+                        <li>${Math.round(forecastDay.temp.day)}</li>
                         </ul>
                 </div>`;
-               
- }
-    })
-            forecastHTML = forecastHTML+`</div>`
-            forecastElement.innerHTML = forecastHTML;
-     
-    }  
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 
 function getForecast(coordinates){
 let apiKey = "d69010af0f1b1a9a7eb6e465bcfbac9b";
